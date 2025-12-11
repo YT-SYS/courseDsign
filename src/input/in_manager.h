@@ -7,16 +7,17 @@
 
 #include <QObject>
 #include <QKeyEvent>
+#include <QDebug>
 
 enum DEVICE_TYPE{
     KEYBOARD = 0,
     GAMEPAD
 };
 
-class InputManger : QObject{
+class InputManger : public QObject{
 Q_OBJECT
     public:
-    InputManger(QObject *parent = NULL);
+    InputManger(QObject *parent = nullptr);
     ~InputManger();
 
     static void handle_key_press(QKeyEvent *event);     // 键盘按下
@@ -38,12 +39,12 @@ public slots:
     void handle_gamepad_btn_release();  // 游戏手柄松开
 
 public:
-    static InputManger *instance;
+    static InputManger *instance_;
 
 private:
     static DEVICE_TYPE in_device_type;
     // 键盘方向
-    static bool is_kye_up;
+    static bool is_key_up;
     static bool is_key_down;
     static bool is_key_left;
     static bool is_key_right;
@@ -52,9 +53,4 @@ private:
     static float gamepad_x_val;
     static float gamepad_y_val;
 };
-
-
-
-
-
 #endif //COURSEDESIGN_KEYBOARD_H

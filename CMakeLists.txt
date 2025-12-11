@@ -9,8 +9,11 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # 强制显式启用C++11支持
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-set(CMAKE_PREFIX_PATH "/opt/qtlib560_base")
+set(QT5_ROOT "/opt/qtlib560_base")
 #set(QT_RCC_EXECUTABLE "D:/Qt/5.15.2/mingw81_64/bin/rcc.exe")
+
+set(SDL_ROOT "/opt/sdl2-arm")
+
 
 # 头文件目录
 include_directories(
@@ -18,6 +21,14 @@ include_directories(
         src/input
         src/widget/
         src/character/
+        ${SDL_ROOT}/include
+        ${QT5_ROOT}/include
+)
+
+# 库文件目录
+link_directories(
+    ${SDL_ROOT}/lib
+    ${QT5_ROOT}/lib
 )
 
 set(SRCS
@@ -42,4 +53,5 @@ target_link_libraries(courseDesign
          Qt5::Core
          Qt5::Gui
          Qt5::Widgets
+         libSDL2.a
 )

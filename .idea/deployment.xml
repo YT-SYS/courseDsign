@@ -27,7 +27,7 @@
       <paths name="csgec（交叉编译） (670325fd-e361-47a2-a43c-63c44c26ef70)">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/tmp.BbyrXESb3H/courseDesign" local="$PROJECT_DIR$" />
+            <mapping deploy="/tmp/courseDsign" local="$PROJECT_DIR$" />
           </mappings>
           <excludedPaths>
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
