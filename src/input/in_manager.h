@@ -6,8 +6,11 @@
 #define COURSEDESIGN_KEYBOARD_H
 
 #include <QObject>
-#include <QKeyEvent>
+#include <QTimer>
 #include <QDebug>
+#include <QKeyEvent>
+
+#include "SDL2/SDL.h"
 
 enum DEVICE_TYPE{
     KEYBOARD = 0,
@@ -15,16 +18,21 @@ enum DEVICE_TYPE{
 };
 
 class InputManger : public QObject{
-Q_OBJECT
-    public:
-    InputManger(QObject *parent = nullptr);
-    ~InputManger();
+    Q_OBJECT
 
-    static void handle_key_press(QKeyEvent *event);     // 键盘按下
-    static void handle_key_release(QKeyEvent *event);   // 键盘松开
+public:
+    explicit InputManger(QObject *parent = nullptr);
+    ~InputManger() override;
 
-    static InputManger *get_instance();                 // 获取一个实例
+    int init();
 
+    void handle_key_press();     // 键盘按下
+    void handle_key_release();   // 键盘松开
+    void handle_gamepad_axis_motion(); // 游戏手柄遥感
+    void handle_gamepad_btn_press();    // 游戏手柄按下
+    void handle_gamepad_btn_release();  // 游戏手柄松开
+
+    // 获取按键或者手柄的值
     static bool is_up();
     static bool is_down();
     static bool is_left();
@@ -33,16 +41,11 @@ Q_OBJECT
     static float gamepad_y();
 
 public slots:
-    void handle_gamepad_connected();    // 游戏手柄连接
-    void handle_gamepad_axis_changed(); // 游戏手柄遥感
-    void handle_gamepad_btn_press();    // 游戏手柄按下
-    void handle_gamepad_btn_release();  // 游戏手柄松开
-
-public:
-    static InputManger *instance_;
-
+    void input_refresh();
 private:
-    static DEVICE_TYPE in_device_type;
+    QTimer *timer_;
+    SDL_Event e;
+    DEVICE_TYPE in_device_type;
     // 键盘方向
     static bool is_key_up;
     static bool is_key_down;
