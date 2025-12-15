@@ -9,7 +9,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # 强制显式启用C++11支持
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-set(QT5_ROOT "/opt/qtlib560_base")
+set(CMAKE_PREFIX_PATH  "/opt/qtlib560_base")
 #set(QT_RCC_EXECUTABLE "D:/Qt/5.15.2/mingw81_64/bin/rcc.exe")
 
 set(SDL_ROOT "/opt/sdl2-arm")
@@ -33,8 +33,7 @@ link_directories(
 
 set(SRCS
         src/core/game_manager.cpp
-        #src/input/in_manager.cpp
-        #src/character/character.cpp
+        src/input/in_manager.cpp
 )
 
 
@@ -53,5 +52,5 @@ target_link_libraries(courseDesign
          Qt5::Core
          Qt5::Gui
          Qt5::Widgets
-         libSDL2.a
+         libSDL2.so
 )

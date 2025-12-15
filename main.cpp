@@ -2,7 +2,7 @@
 #include <QApplication>
 #include <vector>
 #include <QPushButton>
-#include "game_manager.h"
+#include "in_manager.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,6 +13,8 @@ int main(int argc, char *argv[])
     QPushButton button(&widget);
     button.setText("hello world");
     widget.show();
+
+    InputManger  in_manager_;
 
     return a.exec();
 }

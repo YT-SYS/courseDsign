@@ -19,15 +19,17 @@ enum DEVICE_TYPE{
 
 class InputManger : public QObject{
     Q_OBJECT
-
 public:
     explicit InputManger(QObject *parent = nullptr);
     ~InputManger() override;
 
     int init();
 
-    void handle_key_press();     // 键盘按下
-    void handle_key_release();   // 键盘松开
+    static void handle_key_press();     // 键盘按下
+    static void handle_key_release();   // 键盘松开
+
+    void open_gamepad();
+    void close_gamepad();
     void handle_gamepad_axis_motion(); // 游戏手柄遥感
     void handle_gamepad_btn_press();    // 游戏手柄按下
     void handle_gamepad_btn_release();  // 游戏手柄松开
@@ -41,11 +43,12 @@ public:
     static float gamepad_y();
 
 public slots:
-    void input_refresh();
+    void gamepad_event_refresh();
 private:
     QTimer *timer_;
     SDL_Event e;
     DEVICE_TYPE in_device_type;
+    SDL_GameController* gamepad;
     // 键盘方向
     static bool is_key_up;
     static bool is_key_down;

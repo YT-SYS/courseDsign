@@ -3,15 +3,22 @@
 //
 #include "in_manager.h"
 
+bool InputManger::is_key_up = false;
+bool InputManger::is_key_down = false;
+bool InputManger::is_key_left = false;
+bool InputManger::is_key_right = false;
 
+// 手柄方向遥感
+float InputManger::gamepad_x_val = 0.0;
+float InputManger::gamepad_y_val  = 0.0;
 
 InputManger::InputManger(QObject *parent)
-    : QObject(parent)
+    : QObject(parent), in_device_type(KEYBOARD), gamepad(nullptr)
 {
     init();
 
     timer_ = new QTimer(this);
-    connect(timer_, &QTimer::timeout, this, &InputManger::input_refresh);    // 问
+    connect(timer_, &QTimer::timeout, this, &InputManger::gamepad_event_refresh);    // 问
     timer_->start(10);  // 10ms间隔
 }
 
@@ -23,7 +30,7 @@ InputManger::~InputManger(){
  int InputManger::init(){
     const int ret = SDL_Init(SDL_INIT_EVENTS | SDL_INIT_GAMECONTROLLER);
     if (ret < 0 ){
-        printf("SDL_Init failed: %s\n", SDL_GetError());
+        printf("SDL_Init failed: %s\n !!!!!!!!!!!!!", SDL_GetError());
         return -1;
     }
 
@@ -95,12 +102,39 @@ void InputManger::handle_key_release(){
     }
 }
 
+
+void InputManger::open_gamepad(){
+    in_device_type = GAMEPAD;
+
+    if (gamepad == nullptr){
+        gamepad = SDL_GameControllerOpen(e.cdevice.which);
+        if (gamepad) {
+            printf("Gamepad opened successfully\n");
+        } else {
+            printf("Failed to open gamepad: %s\n", SDL_GetError());
+        }
+    }
+}
+
+void InputManger::close_gamepad(){
+    in_device_type = KEYBOARD;
+    if (gamepad) {
+        SDL_GameControllerClose(gamepad);
+        printf("Gamepad close\n");
+        gamepad = nullptr;
+    }
+}
+
+
+
 void InputManger::handle_gamepad_axis_motion(){
     if (e.caxis.axis == SDL_CONTROLLER_AXIS_LEFTX){ // 左遥感x值
-        gamepad_x_val = e.caxis.value / 32767;
+        gamepad_x_val = e.caxis.value / 32767.0f;
+        printf("x_val:%f\n", gamepad_x_val);
     }
     if (e.caxis.axis == SDL_CONTROLLER_AXIS_LEFTY){ // 左遥感x值
-        gamepad_y_val = e.caxis.value / 32767;
+        gamepad_y_val = e.caxis.value / 32767.0f;
+        printf("y_val:%f\n", gamepad_y_val);
     }
 }
 
@@ -175,23 +209,24 @@ float InputManger::gamepad_y(){
 }
 
 
-void InputManger::input_refresh(){
+void InputManger::gamepad_event_refresh(){
+    // printf("timer 10 ms\n");
     while (SDL_PollEvent(&e)){    //从事件队列中取出事件
 
-        if (e.type == SDL_CONTROLLERDEVICEADDED){   // 手柄添加
-            in_device_type = GAMEPAD;
+        // 1.判断是否为手柄的接入和拔出事件
+        if (e.type == SDL_CONTROLLERDEVICEADDED){   // 手柄打开
+            open_gamepad();
         }else if (e.type == SDL_CONTROLLERDEVICEREMOVED){   // 手柄移除
-            in_device_type = KEYBOARD;
+            close_gamepad();
         }
 
-        if (in_device_type == KEYBOARD){    // 键盘事件
-            if (e.type == SDL_KEYDOWN)  handle_key_press(); // 键盘按下事件
-            else if (e.type == SDL_KEYUP) handle_key_release();  // 键盘松开事件
-        }else{  // 手柄事件
+        // 2.判断是否为手柄的动作事件
+        if (in_device_type == KEYBOARD){  // 手柄事件
             if (e.type == SDL_CONTROLLERAXISMOTION) handle_gamepad_axis_motion();   // 遥感运动事件
             else if (e.type == SDL_CONTROLLERBUTTONDOWN) handle_gamepad_btn_press();     // 按钮按下事件
             else if (e.type == SDL_CONTROLLERBUTTONUP)   handle_gamepad_btn_release();   // 按钮松开事件
         }
+
     }
 }
 
