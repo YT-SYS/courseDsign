@@ -42,22 +42,20 @@ public:
     void game_pause();      // 游戏暂停
     void game_continue();   // 游戏继续
     void game_quit();       // 游戏退出
+    void quit();            // 退出
 
     void  update_display(); // 界面切换
 
-    //void keyPressEvent(QKeyEvent* event) override;
-    //void keyReleaseEvent(QKeyEvent* event) override;
-
 public slots:
-    //void game_engine_update();
+    void game_engine_update();
 
 private:
     GameState game_staus_;
     QTimer *timer_engine_;
 
-    GameScene *game_scene_;
     GameView *game_view_;
-    Ui::MainWindow *ui;
+    GameScene *game_scene_;
+    Ui::MainWindow *main_window_;
     Ui::PauseWindow *pause_window_;
 };
 #endif //COURSEDESIGN_CORE_H
