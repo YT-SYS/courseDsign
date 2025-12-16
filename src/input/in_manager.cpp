@@ -38,29 +38,29 @@ InputManger::~InputManger(){
 }
 
 
-void InputManger::handle_key_press() {
-    switch (e.key.keysym.sym){
-    case SDLK_w:{    // 上
+void InputManger::handle_key_press(QKeyEvent* event) {
+    switch (event->key()){
+    case Qt::Key_W:{    // 上
         is_key_up = true;
         qDebug() << "press Key_W";
         break;
     }
-    case SDLK_s:{    // 下
+    case Qt::Key_S:{    // 下
         is_key_down = true;
         qDebug() << "press Key_S";
         break;
     }
-    case SDLK_a:{    // 左
+    case Qt::Key_A:{    // 左
         is_key_left = true;
         qDebug() << "press Key_A";
         break;
     }
-    case SDLK_d:{    // 右
+    case Qt::Key_D:{    // 右
         is_key_right = true;
         qDebug() << "press Key_D";
         break;
     }
-    case SDLK_j:{    // 攻击
+    case Qt::Key_J:{    // 攻击
         qDebug() << "press Key_J";
         break;
     }
@@ -70,29 +70,29 @@ void InputManger::handle_key_press() {
     }
 }
 
-void InputManger::handle_key_release(){
-    switch (e.key.keysym.sym){
-    case SDLK_w:{    // 上
+void InputManger::handle_key_release(QKeyEvent* event){
+    switch (event->key()){
+    case Qt::Key_W:{    // 上
         is_key_up = false;
         qDebug() << "press Key_W";
         break;
     }
-    case SDLK_s:{    // 下
+    case Qt::Key_S:{    // 下
         is_key_down = false;
         qDebug() << "press Key_S";
         break;
     }
-    case SDLK_a:{    // 左
+    case Qt::Key_A:{    // 左
         is_key_left = false;
         qDebug() << "press Key_A";
         break;
     }
-    case SDLK_d:{    // 右
+    case Qt::Key_D:{    // 右
         is_key_right = false;
         qDebug() << "press Key_D";
         break;
     }
-    case SDLK_j:{    // 攻击
+    case Qt::Key_J:{    // 攻击
         qDebug() << "press Key_J";
         break;
     }
