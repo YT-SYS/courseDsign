@@ -10,11 +10,12 @@
 class GameView : public QGraphicsView{
     Q_OBJECT
 public:
-    explicit GameView(QGraphicsView *parent = nullptr);
+    explicit GameView(QWidget *parent = nullptr);
     ~GameView() override;
 
     void keyPressEvent(QKeyEvent *e) override;
     void keyReleaseEvent(QKeyEvent *e) override;
+
 
     void set_focus();
 };

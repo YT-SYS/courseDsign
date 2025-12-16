@@ -1,20 +1,27 @@
-#include <iostream>
 #include <QApplication>
-#include <vector>
-#include <QPushButton>
+#include <QWidget>
+#include <QKeyEvent>
+#include <QDebug>
+#include <QTimer>
 #include "in_manager.h"
+#include "gameView.h"
 
-int main(int argc, char *argv[])
-{
-    QApplication a(argc, argv);
+int main(int argc, char *argv[]) {
+    QApplication app(argc, argv);
+    InputManger input_manger_(nullptr);
 
-    QWidget widget(nullptr);
-    widget.resize(800,600);
-    QPushButton button(&widget);
-    button.setText("hello world");
-    widget.show();
+    // 创建视图
+    GameView view;
+    view.setWindowTitle("Keyboard Test");
+    view.resize(800, 600);
+    view.show();
 
-    InputManger  in_manager_;
+    // 关键修复：虚拟显示环境需要的焦点设置
+    QTimer::singleShot(1000, [&]() {
+        view.activateWindow();  // 先激活窗口
+        view.setFocus();        // 再设置焦点
+        qDebug() << "Focus set! Current focus:" << view.hasFocus();
+    });
 
-    return a.exec();
+    return app.exec();
 }

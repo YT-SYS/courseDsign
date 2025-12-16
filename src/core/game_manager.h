@@ -12,6 +12,7 @@
 #include  <QGraphicsView>
 
 #include "gameScene.h"
+#include "gameView.h"
 #include "ui_main_window.h"
 #include "ui_pause_window.h"
 
@@ -31,8 +32,8 @@ namespace Ui{
 class GameManager: public QWidget{
     Q_OBJECT
 public:
-    GameManager(QWidget *parent = NULL);
-    ~GameManager();
+    explicit GameManager(QWidget *parent = nullptr);
+    ~GameManager() override;
 
     void init();
     void destroy();
@@ -55,7 +56,7 @@ private:
     QTimer *timer_engine_;
 
     GameScene *game_scene_;
-    QGraphicsView *game_view_;
+    GameView *game_view_;
     Ui::MainWindow *ui;
     Ui::PauseWindow *pause_window_;
 };

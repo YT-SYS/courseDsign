@@ -5,7 +5,7 @@
 
 
 GameManager::GameManager(QWidget *parent)
-    : QWidget(parent)
+    : QWidget(parent),
 {
 
 }

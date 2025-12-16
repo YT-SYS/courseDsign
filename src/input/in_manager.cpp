@@ -74,26 +74,26 @@ void InputManger::handle_key_release(QKeyEvent* event){
     switch (event->key()){
     case Qt::Key_W:{    // 上
         is_key_up = false;
-        qDebug() << "press Key_W";
+        qDebug() << "release Key_W";
         break;
     }
     case Qt::Key_S:{    // 下
         is_key_down = false;
-        qDebug() << "press Key_S";
+        qDebug() << "release Key_S";
         break;
     }
     case Qt::Key_A:{    // 左
         is_key_left = false;
-        qDebug() << "press Key_A";
+        qDebug() << "release Key_A";
         break;
     }
     case Qt::Key_D:{    // 右
         is_key_right = false;
-        qDebug() << "press Key_D";
+        qDebug() << "release Key_D";
         break;
     }
     case Qt::Key_J:{    // 攻击
-        qDebug() << "press Key_J";
+        qDebug() << "release Key_J";
         break;
     }
     default:
@@ -128,14 +128,24 @@ void InputManger::close_gamepad(){
 
 
 void InputManger::handle_gamepad_axis_motion(){
-    if (e.caxis.value < 8000) return;
+
 
     if (e.caxis.axis == SDL_CONTROLLER_AXIS_LEFTX){ // 左遥感x值
-        gamepad_x_val = e.caxis.value / 32767.0f;
+        float raw = e.caxis.value / 32767.0f;
+        if ((raw>0 && raw<0.25f) || (raw<0 && raw>-0.25f)){
+            gamepad_x_val = 0.0;
+        }else{
+            gamepad_x_val = raw;
+        }
         printf("x_val:%f\n", gamepad_x_val);
     }
     if (e.caxis.axis == SDL_CONTROLLER_AXIS_LEFTY){ // 左遥感x值
-        gamepad_y_val = e.caxis.value / 32767.0f;
+        float raw = e.caxis.value / 32767.0f;
+        if ((raw>0 && raw<0.25f) || (raw<0 && raw>-0.25f)){
+            gamepad_y_val = 0.0;
+        }else{
+            gamepad_y_val = raw;
+        }
         printf("y_val:%f\n", gamepad_y_val);
     }
 }
@@ -223,7 +233,7 @@ void InputManger::gamepad_event_refresh(){
         }
 
         // 2.判断是否为手柄的动作事件
-        if (in_device_type == KEYBOARD){  // 手柄事件
+        if (in_device_type == GAMEPAD){  // 手柄事件
             if (e.type == SDL_CONTROLLERAXISMOTION) handle_gamepad_axis_motion();   // 遥感运动事件
             else if (e.type == SDL_CONTROLLERBUTTONDOWN) handle_gamepad_btn_press();     // 按钮按下事件
             else if (e.type == SDL_CONTROLLERBUTTONUP)   handle_gamepad_btn_release();   // 按钮松开事件
