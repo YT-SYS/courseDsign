@@ -128,6 +128,8 @@ void InputManger::close_gamepad(){
 
 
 void InputManger::handle_gamepad_axis_motion(){
+    if (e.caxis.value < 8000) return;
+
     if (e.caxis.axis == SDL_CONTROLLER_AXIS_LEFTX){ // 左遥感x值
         gamepad_x_val = e.caxis.value / 32767.0f;
         printf("x_val:%f\n", gamepad_x_val);

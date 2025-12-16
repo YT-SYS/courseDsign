@@ -28,6 +28,7 @@ public:
     static void handle_key_press();     // 键盘按下
     static void handle_key_release();   // 键盘松开
 
+    // 通过 SDL 进行处理
     void open_gamepad();
     void close_gamepad();
     void handle_gamepad_axis_motion(); // 游戏手柄遥感
