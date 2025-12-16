@@ -2,40 +2,34 @@
 <project version="4">
   <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
-      <paths name="cross (b53c859b-a08f-4ee4-96da-983fa2514950)">
+      <paths name="csgec_Wifi (eb798938-abd3-4ccf-a7de-38e3e65647e8)">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/tmp.URznTpN7sY/courseDesign" local="$PROJECT_DIR$" />
+            <mapping deploy="/tmp/tmp.jEDrtmedQb/courseDsign" local="$PROJECT_DIR$" />
           </mappings>
           <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
           </excludedPaths>
         </serverdata>
       </paths>
-      <paths name="csgec (7f6dca26-c8c4-4b40-8f53-4f10162ffa3d)">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/tmp/tmp.LZrdhcNhrn/courseDesign" local="$PROJECT_DIR$" />
-          </mappings>
-          <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
-          </excludedPaths>
-        </serverdata>
-      </paths>
-      <paths name="csgec（交叉编译） (670325fd-e361-47a2-a43c-63c44c26ef70)">
+      <paths name="csgec_交叉编译 (f0e8888d-a17e-4d88-a77a-ee82c13490e1)">
         <serverdata>
           <mappings>
             <mapping deploy="/tmp/courseDsign" local="$PROJECT_DIR$" />
           </mappings>
           <excludedPaths>
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
           </excludedPaths>
         </serverdata>
       </paths>
-      <paths name="wq (2f1a39e7-664b-4cc2-9851-9d6400c76686)">
+      <paths name="csgec_热点 (f506b3bd-b3d0-4fcf-95d3-9cf839ca22df)">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="远程主机-热点 (f3b32f36-accf-4bb8-8247-01c6b0e0bda7)">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
