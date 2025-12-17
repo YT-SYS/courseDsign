@@ -15,6 +15,7 @@
 #include "gameMenu.h"
 #include "gamePause.h"
 #include "gameScene.h"
+#include "in_manager.h"
 
 enum GameState{
     MENU = 0,
@@ -40,6 +41,8 @@ public:
     void quit();            // 退出
 
     void  switch_display(); // 界面切换
+
+    void keyPressEvent(QKeyEvent*) override;
 
 public slots:
     void game_engine_update();

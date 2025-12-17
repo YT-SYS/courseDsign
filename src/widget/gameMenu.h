@@ -12,8 +12,9 @@ public:
     explicit GameMenu(int w, int h, QWidget *parent);
     ~GameMenu() override;
 
-    void keyPressEvent(QKeyEvent *e) override;
-    void keyReleaseEvent(QKeyEvent *e) override;
+signals:
+    void game_start_signal();
+    void global_quit_signal();
 
 private:
     Ui::MainWindow *ui;

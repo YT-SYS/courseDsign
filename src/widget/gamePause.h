@@ -12,8 +12,8 @@ public:
     GamePause(int w, int h, QWidget *parent = nullptr);
     ~GamePause() override;
 
-    void keyPressEvent(QKeyEvent *e) override;
-    void keyReleaseEvent(QKeyEvent *e) override;
+    // void keyPressEvent(QKeyEvent *e) override;
+    // void keyReleaseEvent(QKeyEvent *e) override;
 
 private:
     Ui::PauseWindow *ui;

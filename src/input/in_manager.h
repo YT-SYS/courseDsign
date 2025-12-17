@@ -42,6 +42,9 @@ public:
     static float gamepad_x();
     static float gamepad_y();
 
+signals:
+    void game_pause_signal();
+
 public slots:
     void gamepad_event_refresh();
 private:

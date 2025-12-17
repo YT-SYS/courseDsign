@@ -71,6 +71,8 @@ void InputManger::handle_key_view(QKeyEvent* event, bool is_press){
 
 
 
+
+
 void InputManger::open_gamepad(){
     in_device_type = GAMEPAD;
 

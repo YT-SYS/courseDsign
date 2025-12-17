@@ -3,6 +3,8 @@
 //
 #include "game_manager.h"
 
+#include <QKeyEvent>
+
 
 GameManager::GameManager(QWidget *parent)
     : QWidget(parent), game_staus_{},timer_engine_(nullptr),
@@ -21,10 +23,11 @@ void GameManager::init(){
     // 2.创建游戏循环定时器，并连接槽函数
     timer_engine_ = new QTimer(this);
     connect(timer_engine_, &QTimer::timeout, this, &GameManager::game_engine_update);
-
     // 3.初始化界面
     // 3.1 创建菜单
     game_menu_widget_ = new GameMenu(this->width(), this->height(), this);
+    connect(game_menu_widget_, &GameMenu::game_start_signal, this, &GameManager::game_start);
+    connect(game_menu_widget_, &GameMenu::global_quit_signal, this, &GameManager::quit);
     // 3.2 创建暂停界面
     game_pause_widget_ = new GamePause(this->width(), this->height(), this);
     // 3.3 创建视图
@@ -41,7 +44,7 @@ void GameManager::init(){
 }
 
 void GameManager::quit(){
-
+    QApplication::quit();
 }
 
 void GameManager::switch_display(){
@@ -52,6 +55,7 @@ void GameManager::switch_display(){
     switch (game_staus_){
     case PLAYING:{
         game_view_widget_->show();
+        game_view_widget_->set_focus();
         break;
     }
     case GAME_PAUSE:{
@@ -67,6 +71,29 @@ void GameManager::switch_display(){
         break;
     }
 }
+
+void GameManager::game_engine_update(){
+
+}
+
+void GameManager::keyPressEvent(QKeyEvent* e){
+    if (!e->isAutoRepeat()){
+        switch (e->key()){
+        case Qt::Key_Escape:{
+            if (game_staus_ == PLAYING){
+                printf("press Key_Esc\n");
+                game_pause();
+            }
+        }
+        default:
+            break;
+        }
+    }
+
+    QWidget::keyPressEvent(e);
+}
+
+
 
 
 void GameManager::game_start(){

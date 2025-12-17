@@ -1,8 +1,8 @@
 #ifndef COURSEDESIGN_GAMESCENE_H
 #define COURSEDESIGN_GAMESCENE_H
 
+#include <QObject>
 #include <QGraphicsScene>
-#include <character.h>
 
 class GameScene : public QGraphicsScene{
 Q_OBJECT
@@ -18,8 +18,8 @@ public:
     void remove_all_enemy();    // 移除全部敌人
 
 private:
-    std::vector<Character *>player_;
-    std::vector<Character *>enemy_;
+    // std::vector<Character *>player_;
+    // std::vector<Character *>enemy_;
 };
 
 

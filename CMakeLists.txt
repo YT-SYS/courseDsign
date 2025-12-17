@@ -34,6 +34,9 @@ link_directories(
 set(SRCS
         src/core/game_manager.cpp
         src/input/in_manager.cpp
+        src/widget/gameMenu.cpp
+        src/widget/gamePause.cpp
+        src/widget/gameScene.cpp
         src/widget/gameView.cpp
 )
 
