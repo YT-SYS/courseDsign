@@ -23,10 +23,6 @@ enum GameState{
     GAME_OVER
 };
 
-namespace Ui{
-    class MainWindow;
-    class PauseWindow;
-}
 
 
 class GameManager: public QWidget{
@@ -36,7 +32,6 @@ public:
     ~GameManager() override;
 
     void init();
-    void destroy();
 
     void game_start();      // 游戏开始
     void game_pause();      // 游戏暂停
