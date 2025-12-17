@@ -1,0 +1,47 @@
+[33mcommit f1b34bb88efb133fa03e1622961b3a916889be58[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature_ui[m[33m, [m[1;31morigin/feature_ui[m[33m)[m
+Author: wangshijie <3116517662@qq.com>
+Date:   Tue Dec 16 20:52:50 2025 +0800
+
+    第二次提交：完成初始界面框架构建
+
+[33mcommit 39d74c31107d4e51a5efda9c969fbca2ee1fdaba[m[33m ([m[1;32mfeature_test[m[33m)[m
+Author: wangshijie <3116517662@qq.com>
+Date:   Tue Dec 16 20:32:21 2025 +0800
+
+    设计初始界面框架
+
+[33mcommit c111747b6d198da71f1b94b339c8a32c70a8d990[m
+Author: yt <3215969392@qq.com>
+Date:   Tue Dec 16 09:39:58 2025 +0800
+
+    设计Qt键盘响应框架
+
+[33mcommit 7e4503c314b27dd956231eaae2d4c221f7e05451[m
+Author: yt <3215969392@qq.com>
+Date:   Tue Dec 16 09:35:01 2025 +0800
+
+    添加手柄死区
+
+[33mcommit 6a6d22b832d4290abbe4da05248c1a3978d5dbde[m
+Author: yt <3215969392@qq.com>
+Date:   Mon Dec 15 21:51:02 2025 +0800
+
+    测试手柄响应
+
+[33mcommit a48da2f065b93bf92916ab00d7e231cc6a7c56e8[m
+Author: yt <3215969392@qq.com>
+Date:   Mon Dec 15 20:28:22 2025 +0800
+
+    开发输入设备基本框架
+
+[33mcommit f21fe26a70cfe2c3a4de3cd7eb99ced3b2417cdf[m
+Author: yt <3215969392@qq.com>
+Date:   Thu Dec 11 22:52:13 2025 +0800
+
+    修改了Cmake
+
+[33mcommit 81ab22aa458235e147c88d60f1d131b92cafeaad[m[33m ([m[1;32mmaster[m[33m)[m
+Author: yt <3215969392@qq.com>
+Date:   Tue Dec 9 20:38:06 2025 +0800
+
+    框架
