@@ -25,8 +25,7 @@ public:
 
     int init();
 
-    static void handle_key_press(QKeyEvent* event);     // 键盘按下
-    static void handle_key_release(QKeyEvent* event);   // 键盘松开
+    static void handle_key_view(QKeyEvent* event, bool is_press);   // 按键处理(视图)
 
     // 通过 SDL 进行处理
     void open_gamepad();

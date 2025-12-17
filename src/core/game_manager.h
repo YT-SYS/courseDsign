@@ -11,10 +11,10 @@
 #include <QStackedWidget>
 #include  <QGraphicsView>
 
-#include "gameScene.h"
 #include "gameView.h"
-#include "ui_main_window.h"
-#include "ui_pause_window.h"
+#include "gameMenu.h"
+#include "gamePause.h"
+#include "gameScene.h"
 
 enum GameState{
     MENU = 0,
@@ -39,7 +39,7 @@ public:
     void game_quit();       // 游戏退出
     void quit();            // 退出
 
-    void  update_display(); // 界面切换
+    void  switch_display(); // 界面切换
 
 public slots:
     void game_engine_update();
@@ -48,9 +48,9 @@ private:
     GameState game_staus_;
     QTimer *timer_engine_;
 
-    GameView *game_view_;
-    GameScene *game_scene_;
-    Ui::MainWindow *main_window_;
-    Ui::PauseWindow *pause_window_;
+    GameView    *game_view_widget_;
+    GameScene   *game_scene_widget_;
+    GameMenu    *game_menu_widget_;
+    GamePause   *game_pause_widget_;
 };
 #endif //COURSEDESIGN_CORE_H

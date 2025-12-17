@@ -4,10 +4,10 @@
 #include <QGraphicsScene>
 #include <character.h>
 
-class GameScene : QGraphicsScene{
+class GameScene : public QGraphicsScene{
 Q_OBJECT
 public:
-    GameScene();
+    explicit GameScene(QObject *parent);
     ~GameScene() override;
 
     void set_background();      // 设置背景

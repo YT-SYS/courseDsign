@@ -37,70 +37,38 @@ InputManger::~InputManger(){
     return 0;
 }
 
-
-void InputManger::handle_key_press(QKeyEvent* event) {
+void InputManger::handle_key_view(QKeyEvent* event, bool is_press){
     switch (event->key()){
     case Qt::Key_W:{    // 上
-        is_key_up = true;
-        qDebug() << "press Key_W";
+        is_key_up = is_press;
+        printf("[view] press Key_W: %s\n", is_press ? "true" : "false");
         break;
     }
     case Qt::Key_S:{    // 下
-        is_key_down = true;
-        qDebug() << "press Key_S";
+        is_key_down = is_press;
+        printf("[view] press Key_S: %s\n", is_press ? "true" : "false");
         break;
     }
     case Qt::Key_A:{    // 左
-        is_key_left = true;
-        qDebug() << "press Key_A";
+        is_key_left = is_press;
+        printf("[view] press Key_A: %s\n", is_press ? "true" : "false");
         break;
     }
     case Qt::Key_D:{    // 右
-        is_key_right = true;
-        qDebug() << "press Key_D";
+        is_key_right = is_press;
+        printf("[view] press Key_D: %s\n", is_press ? "true" : "false");
         break;
     }
     case Qt::Key_J:{    // 攻击
-        qDebug() << "press Key_J";
+        printf("[view] press Key_J: %s\n", is_press ? "true" : "false");
         break;
     }
     default:
-        qDebug() << "Unsupported event";
+        printf("[view] Unsupported event\n");
         break;
     }
 }
 
-void InputManger::handle_key_release(QKeyEvent* event){
-    switch (event->key()){
-    case Qt::Key_W:{    // 上
-        is_key_up = false;
-        qDebug() << "release Key_W";
-        break;
-    }
-    case Qt::Key_S:{    // 下
-        is_key_down = false;
-        qDebug() << "release Key_S";
-        break;
-    }
-    case Qt::Key_A:{    // 左
-        is_key_left = false;
-        qDebug() << "release Key_A";
-        break;
-    }
-    case Qt::Key_D:{    // 右
-        is_key_right = false;
-        qDebug() << "release Key_D";
-        break;
-    }
-    case Qt::Key_J:{    // 攻击
-        qDebug() << "release Key_J";
-        break;
-    }
-    default:
-        qDebug() << "Unsupported event";
-        break;
-    }
-}
 
 
 void InputManger::open_gamepad(){

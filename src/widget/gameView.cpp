@@ -20,19 +20,21 @@ GameView::~GameView() = default;
 void GameView::keyPressEvent(QKeyEvent* e){
     printf("key press\n");
     if (!e->isAutoRepeat()){    // 不捕获自动重复事件
-        InputManger::handle_key_press(e);
+        InputManger::handle_key_view(e, true);
+        e->accept();                // 标记这个事件为"已处理"，阻止事件继续传播给父窗口或其他组件
     }
 
-    e->accept();                // 标记这个事件为"已处理"，阻止事件继续传播给父窗口或其他组件
+    e->ignore();  // 告诉Qt这个事件没有被处理
 }
 
 void GameView::keyReleaseEvent(QKeyEvent* e){
     printf("key release\n");
     if (!e->isAutoRepeat()){
-        InputManger::handle_key_release(e);
+        InputManger::handle_key_view(e, false);
+        e->accept();
     }
 
-    e->accept();
+    e->ignore();
 }
 
 void GameView::set_focus(){
