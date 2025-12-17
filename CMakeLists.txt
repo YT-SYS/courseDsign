@@ -34,7 +34,6 @@ link_directories(
 set(SRCS
         src/core/game_manager.cpp
         src/input/in_manager.cpp
-        src/widget/ui_main_window.h
 
 )
 
