@@ -5,25 +5,7 @@
 #include <QPushButton>
 #include "in_manager.h"
 #include "ui_main_window.h"
-
-
-class Widget : public QWidget{
-public:
-    Widget(QWidget *parent);
-    ~Widget() override;
-
-private:
-    Ui_MainWindow *ui;
-};
-Widget::Widget(QWidget *parent)
-    : QWidget(parent)
-{
-    ui = new Ui_MainWindow;
-    ui->setupUi(this);
-}
-Widget::~Widget() {
-
-}
+#include ""
 
 
 int main(int argc, char *argv[])

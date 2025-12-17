@@ -3,5 +3,11 @@
         <file>images/image.jpg</file>
         <file>images/251202_01.png</file>
         <file>images/1.png</file>
+        <file>images/2.png</file>
+        <file>images/button1.1.png</file>
+        <file>images/button1.2.png</file>
+        <file>images/button1.3.png</file>
+        <file>images/button2.1.png</file>
+        <file>images/button2.2.png</file>
     </qresource>
 </RCC>
