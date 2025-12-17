@@ -44,11 +44,38 @@ void GameManager::quit(){
 
 }
 
+void GameManager::switch_display(){
+    game_menu_widget_->hide();
+    game_view_widget_->hide();
+    game_pause_widget_->hide();
+
+    switch (game_staus_){
+    case PLAYING:{
+        game_view_widget_->show();
+        break;
+    }
+    case GAME_PAUSE:{
+        game_view_widget_->show();
+        game_pause_widget_->show();
+        break;
+    }
+    case MENU:{
+        game_menu_widget_->show();
+        break;
+    }
+    default:
+        break;
+    }
+}
+
+
 void GameManager::game_start(){
     // 改变状态
     game_staus_ = PLAYING;
     timer_engine_->start(20);
     printf("[%s] game started\n", __func__);
+
+    switch_display();
 }
 
 void GameManager::game_pause(){
@@ -60,6 +87,8 @@ void GameManager::game_pause(){
     game_staus_ = GAME_PAUSE;
     timer_engine_->stop();
     printf("[%s] game pause\n", __func__);
+
+    switch_display();
 }
 
 void GameManager::game_continue(){
@@ -71,6 +100,8 @@ void GameManager::game_continue(){
     game_staus_ = PLAYING;
     timer_engine_->start(20);
     printf("[%s] game continue\n", __func__);
+
+    switch_display();
 }
 
 void GameManager::game_quit(){
@@ -82,6 +113,8 @@ void GameManager::game_quit(){
     game_staus_ = MENU;
     timer_engine_->stop();
     printf("[%s] game quit\n", __func__);
+
+    switch_display();
 }
 
 
