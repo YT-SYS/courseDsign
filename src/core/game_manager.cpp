@@ -30,6 +30,8 @@ void GameManager::init(){
     connect(game_menu_widget_, &GameMenu::global_quit_signal, this, &GameManager::quit);
     // 3.2 创建暂停界面
     game_pause_widget_ = new GamePause(this->width(), this->height(), this);
+    connect(game_pause_widget_, &GamePause::game_continue_signal, this, &GameManager::game_continue);
+    connect(game_pause_widget_, &GamePause::game_quit_signal, this, &GameManager::game_quit);
     // 3.3 创建视图
     game_view_widget_ = new GameView(this);
     // 3.4 创建场景

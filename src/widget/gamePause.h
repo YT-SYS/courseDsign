@@ -12,6 +12,9 @@ public:
     GamePause(int w, int h, QWidget *parent = nullptr);
     ~GamePause() override;
 
+signals:
+    void game_continue_signal();
+    void game_quit_signal();
     // void keyPressEvent(QKeyEvent *e) override;
     // void keyReleaseEvent(QKeyEvent *e) override;
 
