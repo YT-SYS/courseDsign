@@ -34,10 +34,7 @@ link_directories(
 set(SRCS
         src/core/game_manager.cpp
         src/input/in_manager.cpp
-        src/widget/main_window_sus.cpp
-        src/widget/main_window_sus.h
-        src/widget/main_window_sus.ui
-
+        src/widget/gameView.cpp
 )
 
 
@@ -50,12 +47,7 @@ find_package(Qt5 COMPONENTS
 # 添加资源文件
 qt5_add_resources(RESOURCES  "resources/resources.qrc")
 
-add_executable(courseDesign main.cpp ${SRCS} ${RESOURCES}
-        src/widget/main_window_sus.cpp
-        src/widget/main_window_sus.h
-        src/widget/main_window_sus.ui
-
-)
+add_executable(courseDesign main.cpp ${SRCS} ${RESOURCES})
 
 target_link_libraries(courseDesign
          Qt5::Core

@@ -8,7 +8,7 @@ class GameScene : QGraphicsScene{
 Q_OBJECT
 public:
     GameScene();
-    ~GameScene();
+    ~GameScene() override;
 
     void set_background();      // 设置背景
     void add_player();          // 添加主角

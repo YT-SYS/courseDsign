@@ -12,6 +12,7 @@
 #include  <QGraphicsView>
 
 #include "gameScene.h"
+#include "gameView.h"
 #include "ui_main_window.h"
 #include "ui_pause_window.h"
 
@@ -22,41 +23,34 @@ enum GameState{
     GAME_OVER
 };
 
-namespace Ui{
-    class MainWindow;
-    class PauseWindow;
-}
 
 
 class GameManager: public QWidget{
     Q_OBJECT
 public:
-    GameManager(QWidget *parent = NULL);
-    ~GameManager();
+    explicit GameManager(QWidget *parent = nullptr);
+    ~GameManager() override;
 
     void init();
-    void destroy();
 
     void game_start();      // 游戏开始
     void game_pause();      // 游戏暂停
     void game_continue();   // 游戏继续
     void game_quit();       // 游戏退出
+    void quit();            // 退出
 
     void  update_display(); // 界面切换
 
-    //void keyPressEvent(QKeyEvent* event) override;
-    //void keyReleaseEvent(QKeyEvent* event) override;
-
 public slots:
-    //void game_engine_update();
+    void game_engine_update();
 
 private:
     GameState game_staus_;
     QTimer *timer_engine_;
 
+    GameView *game_view_;
     GameScene *game_scene_;
-    QGraphicsView *game_view_;
-    Ui::MainWindow *ui;
+    Ui::MainWindow *main_window_;
     Ui::PauseWindow *pause_window_;
 };
 #endif //COURSEDESIGN_CORE_H

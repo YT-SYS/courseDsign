@@ -50,6 +50,7 @@ private:
     SDL_Event e;
     DEVICE_TYPE in_device_type;
     SDL_GameController* gamepad;
+
     // 键盘方向
     static bool is_key_up;
     static bool is_key_down;

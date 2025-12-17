@@ -5,22 +5,15 @@
       <paths name="csgec_Wifi (eb798938-abd3-4ccf-a7de-38e3e65647e8)">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/tmp.jEDrtmedQb/courseDsign" local="$PROJECT_DIR$" />
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
-          <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
-          </excludedPaths>
         </serverdata>
       </paths>
       <paths name="csgec_交叉编译 (f0e8888d-a17e-4d88-a77a-ee82c13490e1)">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/tmp.WTrtF1u0dK/courseDsign" local="$PROJECT_DIR$" />
+            <mapping deploy="/tmp/courseDsign" local="$PROJECT_DIR$" />
           </mappings>
-          <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
-          </excludedPaths>
         </serverdata>
       </paths>
       <paths name="csgec_热点 (f506b3bd-b3d0-4fcf-95d3-9cf839ca22df)">
